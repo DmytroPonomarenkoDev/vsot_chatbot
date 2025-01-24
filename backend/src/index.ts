@@ -1,25 +1,28 @@
 import cors from "cors";
 import express, { Request, Response } from "express";
-import { CLIENT_URL } from "./config/env";
 import errorMiddleware from "./middlewares/errorMiddleware";
 import authRoutes from "./routes/authRoutes";
 import userRoutes from "./routes/userRoutes";
 import chatRoutes from "./routes/chatRoutes";
+
 const app = express();
 
-// CORS
-app.use(cors({ origin: CLIENT_URL }));
+// CORS configuration
+app.use(cors({
+  origin: '*',  // During development
+  credentials: true
+}));
 
-// Error handling
-app.use(errorMiddleware);
-
-// JSON
+// JSON parsing before routes
 app.use(express.json());
 
 // Routes
 app.use("/api/chat", chatRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
+
+// Error handling after routes
+app.use(errorMiddleware);
 
 // test api
 app.get("/", (req: Request, res: Response) => {

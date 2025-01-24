@@ -7,9 +7,8 @@ services:
       context: ./frontend
       dockerfile: frontend.dockerfile
     ports:
-      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
+      - "${FRONTEND_PORT}:3000"
     environment:
-      - FRONTEND_PORT=${FRONTEND_PORT}
       - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
     volumes:
       - ./frontend:/app
@@ -53,6 +52,6 @@ services:
       - pgdata:/var/lib/postgresql/data
 
 volumes:
-  pgdata:
   frontend_node_modules:
   backend_node_modules:
+  pgdata:
