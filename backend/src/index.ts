@@ -4,6 +4,7 @@ import { CLIENT_URL } from "./config/env";
 import errorMiddleware from "./middlewares/errorMiddleware";
 import authRoutes from "./routes/authRoutes";
 import userRoutes from "./routes/userRoutes";
+import chatRoutes from "./routes/chatRoutes";
 const app = express();
 
 // CORS
@@ -16,6 +17,7 @@ app.use(errorMiddleware);
 app.use(express.json());
 
 // Routes
+app.use("/api/chat", chatRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 

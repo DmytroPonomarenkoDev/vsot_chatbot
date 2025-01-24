@@ -10,7 +10,8 @@ COPY prisma ./prisma
 
 RUN npx prisma generate
 
-COPY . .
+COPY src ./src
+COPY tsconfig.json ./
 
 EXPOSE 4000
 

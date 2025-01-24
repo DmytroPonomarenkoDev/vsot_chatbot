@@ -1,7 +1,8 @@
-import app from ".";
+import app from './index';
+import { BACKEND_PORT } from "./config/env";
 
-const PORT = process.env.BACKEND_PORT;
+const port = BACKEND_PORT || 4000;
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+}); 
